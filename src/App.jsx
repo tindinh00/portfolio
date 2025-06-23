@@ -23,7 +23,7 @@ function App() {
       setDarkMode(savedMode === 'true')
     }
     
-    document.title = 'Doan Dinh Tin - Visual Designer'
+    document.title = 'Doan Dinh Tin'
   }, [])
 
   useEffect(() => {

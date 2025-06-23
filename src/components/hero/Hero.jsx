@@ -61,19 +61,19 @@ const Hero = () => {
       <div className="container-custom">
         <div className="flex flex-col md:flex-row items-center justify-between gap-16">
           <motion.div 
-            className="md:w-1/2"
+            className="md:w-1/2 w-full flex flex-col items-center md:items-start"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-4 text-gray-800 dark:text-white">
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-4 text-gray-800 dark:text-white text-center md:text-left">
               <div className='text-indigo-600 dark:text-violet-400'>Doan</div>
               <div>Dinh Tin</div>
             </h1>
             
-            <div className="w-32 h-1 bg-indigo-500 dark:bg-violet-500 my-6"></div>
+            <div className="w-32 h-1 bg-indigo-500 dark:bg-violet-500 my-6 mx-auto md:mx-0"></div>
             
-            <h2 className="text-2xl md:text-3xl font-medium text-gray-700 dark:text-gray-200 mb-6">
+            <h2 className="text-2xl md:text-3xl font-medium text-gray-700 dark:text-gray-200 mb-6 text-center md:text-left">
               <TypewriterText 
                 texts={["Frontend Developer", "React Developer", "Web Designer", "UI/UX Enthusiast"]} 
                 typingSpeed={100}
@@ -82,11 +82,11 @@ const Hero = () => {
               />
             </h2>
             
-            <p className="text-lg text-gray-600 dark:text-gray-300 mb-8 max-w-lg">
+            <p className="text-lg text-gray-600 dark:text-gray-300 mb-8 max-w-lg text-center md:text-left">
               I'm creative developer based in New York, and I'm very passionate and dedicated to my work.
             </p>
             
-            <div className="flex items-center gap-6 flex-wrap">
+            <div className="flex items-center justify-center md:justify-start gap-6 flex-wrap w-full">
               <motion.div
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
@@ -99,7 +99,7 @@ const Hero = () => {
                 </Button>
               </motion.div>
               
-              <div className="flex items-center gap-4">
+              <div className="flex items-center justify-center gap-4">
                 <motion.a 
                   href="https://www.linkedin.com/in/dtcoder308" 
                   target="_blank" 
@@ -174,7 +174,7 @@ const Hero = () => {
         </div>
         
         <motion.div 
-          className="absolute bottom-10 left-1/2 transform -translate-x-1/2 flex flex-col items-center text-gray-600 dark:text-gray-300"
+          className="absolute bottom-5 left-0 right-0 mx-auto flex flex-col items-center text-gray-600 dark:text-gray-300"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.8 }}
