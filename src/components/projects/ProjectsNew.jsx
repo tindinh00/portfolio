@@ -1,0 +1,216 @@
+import { useState } from 'react'
+import { motion } from 'framer-motion'
+import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa'
+import { Button } from '@/components/ui/button'
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card"
+
+const ProjectsNew = () => {
+  const [activeFilter, setActiveFilter] = useState('all')
+  
+  const projects = [
+    {
+      id: 1,
+      title: 'E-Commerce Website',
+      description: 'A fully responsive e-commerce website with product filtering, cart functionality, and user authentication.',
+      image: 'https://via.placeholder.com/600x400?text=E-Commerce+Website',
+      tags: ['react', 'frontend'],
+      github: '#',
+      demo: '#',
+      technologies: ['React', 'Redux', 'Tailwind CSS', 'Firebase']
+    },
+    {
+      id: 2,
+      title: 'Task Management App',
+      description: 'A task management application with drag-and-drop functionality, filters, and user settings.',
+      image: 'https://via.placeholder.com/600x400?text=Task+Management+App',
+      tags: ['react', 'frontend'],
+      github: '#',
+      demo: '#',
+      technologies: ['React', 'TypeScript', 'Context API', 'Styled Components']
+    },
+    {
+      id: 3,
+      title: 'Portfolio Website',
+      description: 'A modern and responsive portfolio website for creative professionals and developers.',
+      image: 'https://via.placeholder.com/600x400?text=Portfolio+Website',
+      tags: ['frontend', 'ui'],
+      github: '#',
+      demo: '#',
+      technologies: ['React', 'Framer Motion', 'Tailwind CSS']
+    },
+    {
+      id: 4,
+      title: 'Weather Dashboard',
+      description: 'Real-time weather dashboard with search functionality, forecasts, and interactive maps.',
+      image: 'https://via.placeholder.com/600x400?text=Weather+Dashboard',
+      tags: ['frontend', 'api'],
+      github: '#',
+      demo: '#',
+      technologies: ['JavaScript', 'Weather API', 'Chart.js', 'CSS3']
+    },
+    {
+      id: 5,
+      title: 'Social Media Dashboard',
+      description: 'A responsive dashboard that displays analytics and statistics for social media platforms.',
+      image: 'https://via.placeholder.com/600x400?text=Social+Media+Dashboard',
+      tags: ['ui', 'frontend'],
+      github: '#',
+      demo: '#',
+      technologies: ['React', 'Redux', 'Chart.js', 'Tailwind CSS']
+    },
+    {
+      id: 6,
+      title: 'Recipe Finder App',
+      description: 'An application that helps users find recipes based on ingredients they have at home.',
+      image: 'https://via.placeholder.com/600x400?text=Recipe+Finder+App',
+      tags: ['api', 'frontend'],
+      github: '#',
+      demo: '#',
+      technologies: ['React', 'Food API', 'CSS3', 'JavaScript']
+    }
+  ]
+
+  const filters = [
+    { name: 'All', value: 'all' },
+    { name: 'Frontend', value: 'frontend' },
+    { name: 'UI/UX', value: 'ui' },
+    { name: 'API', value: 'api' }
+  ]
+  
+  const filteredProjects = activeFilter === 'all' 
+    ? projects 
+    : projects.filter(project => project.tags.includes(activeFilter))
+
+  return (
+    <section id="projects" className="py-20 bg-gray-50 dark:bg-[#121a29]">
+      <div className="container-custom">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          viewport={{ once: true }}
+          className="mb-12 text-center"
+        >
+          <h2 className="section-heading">My Projects</h2>
+          <div className="w-20 h-1 bg-indigo-500 dark:bg-violet-500 mx-auto"></div>
+          <p className="mt-6 text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+            Here are some of my recent projects. Each project solves specific problems
+            and demonstrates different skills and technologies.
+          </p>
+        </motion.div>
+
+        <div className="flex justify-center flex-wrap gap-4 mb-10">
+          {filters.map(filter => (
+            <Button
+              key={filter.value}
+              onClick={() => setActiveFilter(filter.value)}
+              variant={activeFilter === filter.value ? "default" : "secondary"}
+              className={activeFilter === filter.value 
+                ? "bg-indigo-600 dark:bg-violet-600 hover:bg-indigo-700 dark:hover:bg-violet-700" 
+                : "bg-gray-200 dark:bg-[#1a2334] text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-[#2a344a]"
+              }
+            >
+              {filter.name}
+            </Button>
+          ))}
+        </div>
+
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {filteredProjects.map((project, index) => (
+            <motion.div
+              key={project.id}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              viewport={{ once: true }}
+              whileHover={{ y: -10 }}
+            >
+              <Card className="bg-white dark:bg-[#1a2334] border-none text-gray-800 dark:text-white h-full flex flex-col overflow-hidden shadow-lg">
+                <div className="relative overflow-hidden aspect-video">
+                  <img 
+                    src={project.image} 
+                    alt={project.title} 
+                    className="w-full h-full object-cover transition-transform hover:scale-110 duration-500"
+                  />
+                </div>
+                <CardHeader>
+                  <CardTitle>{project.title}</CardTitle>
+                  <CardDescription className="text-gray-600 dark:text-gray-400">
+                    {project.description}
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    {project.technologies.map(tech => (
+                      <span 
+                        key={tech} 
+                        className="text-xs bg-gray-100 dark:bg-[#0f1624] text-gray-700 dark:text-gray-300 px-2 py-1 rounded"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                </CardContent>
+                <CardFooter className="flex justify-between mt-auto">
+                  <a 
+                    href={project.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center text-indigo-600 dark:text-violet-400 hover:underline"
+                  >
+                    <FaGithub className="mr-1" /> Code
+                  </a>
+                  <a 
+                    href={project.demo}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center text-indigo-600 dark:text-violet-400 hover:underline"
+                  >
+                    <FaExternalLinkAlt className="mr-1" /> Live Demo
+                  </a>
+                </CardFooter>
+              </Card>
+            </motion.div>
+          ))}
+        </div>
+        
+        {filteredProjects.length === 0 && (
+          <div className="text-center text-gray-600 dark:text-gray-400 mt-10">
+            No projects found with the selected filter.
+          </div>
+        )}
+        
+        <div className="text-center mt-12">
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="inline-block"
+          >
+            <Button 
+              asChild
+              className="bg-indigo-600 dark:bg-violet-600 hover:bg-indigo-700 dark:hover:bg-violet-700"
+            >
+              <a
+                href="https://github.com/yourusername"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center"
+              >
+                <FaGithub className="mr-2" /> See More on GitHub
+              </a>
+            </Button>
+          </motion.div>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+export default ProjectsNew 
