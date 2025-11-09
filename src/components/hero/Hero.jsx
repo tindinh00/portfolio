@@ -68,7 +68,7 @@ const Hero = () => {
           >
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-4 text-gray-800 dark:text-white text-center md:text-left">
               <div className='text-indigo-600 dark:text-violet-400'>Doan</div>
-              <div>Dinh Tin</div>
+              <div>Dinh Tinn</div>
             </h1>
             
             <div className="w-32 h-1 bg-indigo-500 dark:bg-violet-500 my-6 mx-auto md:mx-0"></div>
